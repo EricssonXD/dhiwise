@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:good_trip/core/app_export.dart';
-import 'package:good_trip/widgets/app_bar/appbar_title.dart';
+import 'package:good_trip/widgets/app_bar/appbar_subtitle.dart';
 import 'package:good_trip/widgets/app_bar/custom_app_bar.dart';
 
 class LuggageInfoScreen extends StatelessWidget {
@@ -15,7 +15,7 @@ class LuggageInfoScreen extends StatelessWidget {
             body: Container(
                 margin: EdgeInsets.symmetric(horizontal: 40.h, vertical: 62.v),
                 padding: EdgeInsets.symmetric(horizontal: 12.h, vertical: 5.v),
-                decoration: AppDecoration.outlinePrimary,
+                decoration: AppDecoration.outlineBlack,
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
@@ -40,10 +40,9 @@ class LuggageInfoScreen extends StatelessWidget {
                                         padding: EdgeInsets.symmetric(
                                             horizontal: 19.h, vertical: 2.v),
                                         decoration:
-                                            AppDecoration.outlinePrimary1,
+                                            AppDecoration.outlineBlack900,
                                         child: Text("H3E75",
-                                            style:
-                                                CustomTextStyles.bodyLarge16)))
+                                            style: theme.textTheme.bodyLarge)))
                               ])),
                       Container(
                           width: 143.h,
@@ -53,13 +52,13 @@ class LuggageInfoScreen extends StatelessWidget {
                               text: TextSpan(children: [
                                 TextSpan(
                                     text: "Estimated Arrival Time\n",
-                                    style: theme.textTheme.bodyLarge),
+                                    style: CustomTextStyles.bodyLarge18),
                                 TextSpan(
                                     text: "\n",
-                                    style: theme.textTheme.titleLarge),
+                                    style: CustomTextStyles.titleLargeBlack900),
                                 TextSpan(
                                     text: "~ 15:00",
-                                    style: theme.textTheme.bodyLarge)
+                                    style: CustomTextStyles.bodyLarge18)
                               ]),
                               textAlign: TextAlign.center))
                     ]))));
@@ -99,7 +98,7 @@ class LuggageInfoScreen extends StatelessWidget {
                   ]))
             ])),
         centerTitle: true,
-        title: AppbarTitle(text: "Luggage"));
+        title: AppbarSubtitle(text: "Luggage"));
   }
 
   /// Navigates back to the previous screen.

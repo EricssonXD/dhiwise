@@ -29,9 +29,9 @@ class AppNavigationScreen extends StatelessWidget {
                       children: [
                         _buildScreenTitle(
                           context,
-                          screenTitle: "Splash Screen",
-                          onTapScreenTitle: () =>
-                              onTapScreenTitle(context, AppRoutes.splashScreen),
+                          screenTitle: "Home Page Shell - Container",
+                          onTapScreenTitle: () => onTapScreenTitle(
+                              context, AppRoutes.homePageShellContainerScreen),
                         ),
                         _buildScreenTitle(
                           context,
@@ -41,21 +41,9 @@ class AppNavigationScreen extends StatelessWidget {
                         ),
                         _buildScreenTitle(
                           context,
-                          screenTitle: "Home Page Shell",
-                          onTapScreenTitle: () => onTapScreenTitle(
-                              context, AppRoutes.homePageShellScreen),
-                        ),
-                        _buildScreenTitle(
-                          context,
                           screenTitle: "Journey Page",
                           onTapScreenTitle: () => onTapScreenTitle(
                               context, AppRoutes.journeyPageScreen),
-                        ),
-                        _buildScreenTitle(
-                          context,
-                          screenTitle: "Luggage Page",
-                          onTapScreenTitle: () => onTapScreenTitle(
-                              context, AppRoutes.luggagePageScreen),
                         ),
                         _buildScreenTitle(
                           context,
@@ -71,6 +59,18 @@ class AppNavigationScreen extends StatelessWidget {
                         ),
                         _buildScreenTitle(
                           context,
+                          screenTitle: "Luggage Page",
+                          onTapScreenTitle: () => onTapScreenTitle(
+                              context, AppRoutes.luggagePageScreen),
+                        ),
+                        _buildScreenTitle(
+                          context,
+                          screenTitle: "Luggage Page Selected",
+                          onTapScreenTitle: () => onTapScreenTitle(
+                              context, AppRoutes.luggagePageSelectedScreen),
+                        ),
+                        _buildScreenTitle(
+                          context,
                           screenTitle: "Tickets Page",
                           onTapScreenTitle: () => onTapScreenTitle(
                               context, AppRoutes.ticketsPageScreen),
@@ -80,12 +80,6 @@ class AppNavigationScreen extends StatelessWidget {
                           screenTitle: "Tickets Info",
                           onTapScreenTitle: () => onTapScreenTitle(
                               context, AppRoutes.ticketsInfoScreen),
-                        ),
-                        _buildScreenTitle(
-                          context,
-                          screenTitle: "Profile Page",
-                          onTapScreenTitle: () => onTapScreenTitle(
-                              context, AppRoutes.profilePageScreen),
                         ),
                       ],
                     ),

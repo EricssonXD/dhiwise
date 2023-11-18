@@ -31,12 +31,6 @@ class CustomBottomBarState extends State<CustomBottomBar> {
       activeIcon: ImageConstant.imgNavTickets,
       title: "Tickets",
       type: BottomBarEnum.Tickets,
-    ),
-    BottomMenuModel(
-      icon: ImageConstant.imgNavProfile,
-      activeIcon: ImageConstant.imgNavProfile,
-      title: "Profile",
-      type: BottomBarEnum.Profile,
     )
   ];
 
@@ -51,7 +45,7 @@ class CustomBottomBarState extends State<CustomBottomBar> {
         ),
         boxShadow: [
           BoxShadow(
-            color: theme.colorScheme.primary,
+            color: appTheme.black900.withOpacity(0.25),
             spreadRadius: 2.h,
             blurRadius: 2.h,
             offset: Offset(
@@ -79,14 +73,14 @@ class CustomBottomBarState extends State<CustomBottomBar> {
                   imagePath: bottomMenuList[index].icon,
                   height: 18.v,
                   width: 22.h,
-                  color: theme.colorScheme.primary.withOpacity(1),
+                  color: appTheme.black900,
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 10.v),
                   child: Text(
                     bottomMenuList[index].title ?? "",
                     style: theme.textTheme.bodySmall!.copyWith(
-                      color: theme.colorScheme.primary.withOpacity(1),
+                      color: appTheme.black900,
                     ),
                   ),
                 ),
@@ -100,14 +94,14 @@ class CustomBottomBarState extends State<CustomBottomBar> {
                   imagePath: bottomMenuList[index].activeIcon,
                   height: 23.v,
                   width: 15.h,
-                  color: theme.colorScheme.primary.withOpacity(1),
+                  color: appTheme.black900,
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 7.v),
                   child: Text(
                     bottomMenuList[index].title ?? "",
                     style: theme.textTheme.bodySmall!.copyWith(
-                      color: theme.colorScheme.primary.withOpacity(1),
+                      color: appTheme.black900,
                     ),
                   ),
                 ),
@@ -130,7 +124,6 @@ enum BottomBarEnum {
   Journey,
   Luggage,
   Tickets,
-  Profile,
 }
 
 class BottomMenuModel {

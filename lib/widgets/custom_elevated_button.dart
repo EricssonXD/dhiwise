@@ -46,7 +46,7 @@ class CustomElevatedButton extends BaseButton {
   }
 
   Widget get buildElevatedButtonWidget => Container(
-        height: this.height ?? 70.v,
+        height: this.height ?? 52.v,
         width: this.width ?? double.maxFinite,
         margin: margin,
         decoration: decoration,
@@ -60,7 +60,7 @@ class CustomElevatedButton extends BaseButton {
               leftIcon ?? const SizedBox.shrink(),
               Text(
                 text,
-                style: buttonTextStyle ?? CustomTextStyles.titleLargeKodchasan,
+                style: buttonTextStyle ?? theme.textTheme.titleMedium,
               ),
               rightIcon ?? const SizedBox.shrink(),
             ],

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:good_trip/core/app_export.dart';
-import 'package:good_trip/widgets/custom_outlined_button.dart';
+import 'package:good_trip/widgets/custom_elevated_button.dart';
 
 class TicketsInfoScreen extends StatelessWidget {
   const TicketsInfoScreen({Key? key}) : super(key: key);
@@ -10,154 +10,173 @@ class TicketsInfoScreen extends StatelessWidget {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
         child: Scaffold(
-            body: Container(
+            body: SizedBox(
                 width: double.maxFinite,
-                padding: EdgeInsets.symmetric(vertical: 14.v),
                 child: Column(children: [
-                  _buildSix(context),
-                  SizedBox(height: 33.v),
-                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                    Padding(
-                        padding: EdgeInsets.only(bottom: 2.v),
-                        child: Column(children: [
-                          Text("08:00 HKT", style: theme.textTheme.bodyMedium),
-                          SizedBox(height: 14.v),
-                          Text("Macau", style: theme.textTheme.bodySmall)
-                        ])),
-                    Padding(
-                        padding: EdgeInsets.only(left: 19.h),
-                        child: Column(children: [
-                          SizedBox(
-                              width: 160.h,
-                              child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    CustomImageView(
-                                        imagePath:
-                                            ImageConstant.imgVectorPrimary,
-                                        height: 16.v,
-                                        width: 68.h,
-                                        margin: EdgeInsets.only(top: 16.v)),
-                                    Padding(
-                                        padding: EdgeInsets.only(bottom: 15.v),
-                                        child: Text("15:30 HKT",
-                                            style: theme.textTheme.bodyMedium))
-                                  ])),
-                          Align(
-                              alignment: Alignment.centerRight,
-                              child: Padding(
-                                  padding: EdgeInsets.only(right: 12.h),
-                                  child: Text("Hong Kong",
-                                      style: theme.textTheme.bodySmall)))
-                        ]))
-                  ]),
-                  SizedBox(height: 44.v),
-                  Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                          padding: EdgeInsets.only(left: 87.h),
-                          child: Row(children: [
-                            CustomImageView(
-                                imagePath: ImageConstant.imgTrash,
-                                height: 17.adaptSize,
-                                width: 17.adaptSize,
-                                margin: EdgeInsets.only(bottom: 2.v)),
-                            Padding(
-                                padding: EdgeInsets.only(left: 8.h),
-                                child: Text("11 - 7 - 2023",
-                                    style: CustomTextStyles
-                                        .bodyMediumBlack9000115))
-                          ]))),
-                  SizedBox(height: 7.v),
-                  Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                          padding: EdgeInsets.only(left: 88.h),
-                          child: Row(children: [
-                            Container(
-                                height: 18.v,
-                                width: 13.h,
-                                margin: EdgeInsets.only(bottom: 1.v),
-                                child: Stack(
-                                    alignment: Alignment.center,
-                                    children: [
-                                      Align(
-                                          alignment: Alignment.topCenter,
-                                          child: Container(
-                                              height: 3.adaptSize,
-                                              width: 3.adaptSize,
-                                              margin: EdgeInsets.only(top: 5.v),
-                                              decoration: BoxDecoration(
-                                                  color: appTheme.gray50001,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          1.h)))),
-                                      CustomImageView(
-                                          imagePath: ImageConstant.imgLocation,
-                                          height: 18.v,
-                                          width: 13.h,
-                                          alignment: Alignment.center)
-                                    ])),
-                            Padding(
-                                padding: EdgeInsets.only(left: 10.h),
-                                child: Text("Macau -> Hong Kong",
-                                    style: CustomTextStyles
-                                        .bodyMediumBlack9000115))
-                          ]))),
-                  SizedBox(height: 24.v),
+                  CustomImageView(
+                      imagePath: ImageConstant.imgImage18201x390,
+                      height: 201.v,
+                      width: 390.h),
+                  _buildHktColumn(context),
+                  SizedBox(height: 15.v),
+                  _buildLocationColumn(context),
+                  SizedBox(height: 16.v),
                   SizedBox(
-                      height: 245.v,
-                      width: 226.h,
-                      child: Stack(alignment: Alignment.topCenter, children: [
+                      height: 196.v,
+                      width: 201.h,
+                      child:
+                          Stack(alignment: Alignment.bottomCenter, children: [
+                        CustomImageView(
+                            imagePath: ImageConstant.imgImage21,
+                            height: 184.v,
+                            width: 201.h,
+                            alignment: Alignment.topCenter),
                         Align(
                             alignment: Alignment.bottomCenter,
                             child: Text("Ticket QR Code",
                                 style: CustomTextStyles
-                                    .titleMediumPrimarySemiBold)),
-                        CustomImageView(
-                            imagePath: ImageConstant.imgImage21226x226,
-                            height: 226.adaptSize,
-                            width: 226.adaptSize,
-                            alignment: Alignment.topCenter)
+                                    .titleMediumOnPrimaryContainer))
                       ])),
-                  SizedBox(height: 41.v),
-                  CustomOutlinedButton(
-                      height: 62.v,
-                      text: "Select Luggage",
-                      margin: EdgeInsets.only(left: 57.h, right: 56.h),
-                      buttonStyle: CustomButtonStyles.outlineGray,
-                      buttonTextStyle: CustomTextStyles.bodyMedium15),
-                  SizedBox(height: 5.v)
+                  SizedBox(height: 22.v),
+                  _buildBackStack(context)
                 ]))));
   }
 
   /// Section Widget
-  Widget _buildSix(BuildContext context) {
+  Widget _buildHktColumn(BuildContext context) {
+    return Container(
+        padding: EdgeInsets.symmetric(horizontal: 40.h, vertical: 20.v),
+        decoration: AppDecoration.fillGray,
+        child: Container(
+            margin: EdgeInsets.only(left: 1.h),
+            padding: EdgeInsets.symmetric(horizontal: 25.h, vertical: 23.v),
+            decoration: AppDecoration.outlineBlack,
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                      padding: EdgeInsets.only(left: 7.h, bottom: 3.v),
+                      child: Column(children: [
+                        Text("08:00 HKT",
+                            style: CustomTextStyles.bodyMediumBlack90014_1),
+                        SizedBox(height: 14.v),
+                        Text("Zhuhai",
+                            style:
+                                CustomTextStyles.bodySmallOnSecondaryContainer)
+                      ])),
+                  Column(children: [
+                    SizedBox(
+                        width: 161.h,
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              CustomImageView(
+                                  imagePath: ImageConstant.imgVectorPrimary,
+                                  height: 16.v,
+                                  width: 68.h,
+                                  margin: EdgeInsets.only(top: 16.v)),
+                              Padding(
+                                  padding: EdgeInsets.only(bottom: 15.v),
+                                  child: Text("09:30 HKT",
+                                      style: CustomTextStyles
+                                          .bodyMediumBlack90014_1))
+                            ])),
+                    Align(
+                        alignment: Alignment.centerRight,
+                        child: Padding(
+                            padding: EdgeInsets.only(right: 13.h),
+                            child: Text("Hong Kong",
+                                style: theme.textTheme.bodySmall)))
+                  ])
+                ])));
+  }
+
+  /// Section Widget
+  Widget _buildLocationColumn(BuildContext context) {
+    return Container(
+        width: 389.h,
+        padding: EdgeInsets.symmetric(horizontal: 89.h, vertical: 17.v),
+        decoration: AppDecoration.fillGray,
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                  padding: EdgeInsets.only(left: 1.h, right: 35.h),
+                  child: Row(children: [
+                    CustomImageView(
+                        imagePath:
+                            ImageConstant.imgLocationOnprimarycontainer13x10,
+                        height: 18.v,
+                        width: 13.h,
+                        margin: EdgeInsets.only(bottom: 4.v)),
+                    Padding(
+                        padding: EdgeInsets.only(left: 13.h, top: 3.v),
+                        child: Text("Zhuhai -> Hong Kong",
+                            style: theme.textTheme.bodyMedium))
+                  ])),
+              SizedBox(height: 6.v),
+              Row(children: [
+                CustomImageView(
+                    imagePath: ImageConstant.imgGroup36,
+                    height: 16.adaptSize,
+                    width: 16.adaptSize,
+                    margin: EdgeInsets.only(bottom: 2.v)),
+                Padding(
+                    padding: EdgeInsets.only(left: 11.h),
+                    child: Text("18 - 11 - 2023",
+                        style: theme.textTheme.bodyMedium))
+              ]),
+              SizedBox(height: 10.v),
+              Padding(
+                  padding: EdgeInsets.only(left: 1.h),
+                  child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomImageView(
+                            imagePath: ImageConstant.imgGroup39,
+                            height: 13.v,
+                            width: 14.h,
+                            margin: EdgeInsets.only(top: 1.v, bottom: 4.v)),
+                        Padding(
+                            padding: EdgeInsets.only(left: 12.h),
+                            child: Text("230 HKD",
+                                style: theme.textTheme.bodyMedium))
+                      ])),
+              SizedBox(height: 2.v)
+            ]));
+  }
+
+  /// Section Widget
+  Widget _buildBackStack(BuildContext context) {
     return SizedBox(
-        height: 200.v,
+        height: 104.v,
         width: double.maxFinite,
-        child: Stack(alignment: Alignment.topLeft, children: [
-          CustomImageView(
-              imagePath: ImageConstant.imgImage18200x390,
-              height: 200.v,
-              width: 390.h,
-              alignment: Alignment.center),
-          CustomImageView(
-              imagePath: ImageConstant.imgArrowLeft,
-              height: 16.v,
-              width: 9.h,
-              alignment: Alignment.topLeft,
-              margin: EdgeInsets.only(left: 15.h, top: 14.v),
-              onTap: () {
-                onTapImgArrowLeft(context);
-              })
+        child: Stack(alignment: Alignment.topCenter, children: [
+          Align(
+              alignment: Alignment.center,
+              child: Container(
+                  margin: EdgeInsets.only(right: 1.h),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 16.h, vertical: 18.v),
+                  decoration: AppDecoration.fillGray,
+                  child: Column(mainAxisSize: MainAxisSize.min, children: [
+                    SizedBox(height: 16.v),
+                    CustomElevatedButton(
+                        text: "Back",
+                        onPressed: () {
+                          onTapBack(context);
+                        })
+                  ]))),
+          Align(
+              alignment: Alignment.topCenter,
+              child: SizedBox(width: double.maxFinite, child: Divider()))
         ]));
   }
 
-  /// Navigates back to the previous screen.
-  onTapImgArrowLeft(BuildContext context) {
-    Navigator.pop(context);
+  /// Navigates to the ticketsPageScreen when the action is triggered.
+  onTapBack(BuildContext context) {
+    Navigator.pushNamed(context, AppRoutes.ticketsPageScreen);
   }
 }

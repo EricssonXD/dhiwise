@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:good_trip/core/app_export.dart';
 import 'package:good_trip/widgets/app_bar/appbar_leading_image.dart';
-import 'package:good_trip/widgets/app_bar/appbar_title.dart';
+import 'package:good_trip/widgets/app_bar/appbar_subtitle.dart';
 import 'package:good_trip/widgets/app_bar/custom_app_bar.dart';
 
 class LuggageScanScreen extends StatelessWidget {
@@ -33,7 +33,7 @@ class LuggageScanScreen extends StatelessWidget {
               onTapArrowLeft(context);
             }),
         centerTitle: true,
-        title: AppbarTitle(text: "Add New Baggage"));
+        title: AppbarSubtitle(text: "Add New Baggage"));
   }
 
   /// Navigates back to the previous screen.

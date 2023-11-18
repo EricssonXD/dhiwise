@@ -28,8 +28,8 @@ class AppbarTitleButton extends StatelessWidget {
           height: 29.v,
           width: 176.h,
           text: "Travel To Hong Kong",
-          buttonStyle: CustomButtonStyles.fillGray,
-          buttonTextStyle: CustomTextStyles.bodyLarge16,
+          buttonStyle: CustomButtonStyles.fillGray1,
+          buttonTextStyle: theme.textTheme.bodyLarge!,
         ),
       ),
     );

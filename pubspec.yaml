@@ -38,6 +38,8 @@ flutter:
           weight: 300
         - asset: assets/fonts/InterSemiBold.ttf
           weight: 600
+        - asset: assets/fonts/InterExtraBold.ttf
+          weight: 800
     - family: Roboto
       fonts: 
         - asset: assets/fonts/RobotoRegular.ttf

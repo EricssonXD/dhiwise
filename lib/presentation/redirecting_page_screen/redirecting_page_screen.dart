@@ -1,5 +1,5 @@
-import '../redirecting_page_screen/widgets/fiftyeightchipview_item_widget.dart';
-import '../redirecting_page_screen/widgets/fiftynine_item_widget.dart';
+import '../redirecting_page_screen/widgets/yes2_item_widget.dart';
+import '../redirecting_page_screen/widgets/yes_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:good_trip/core/app_export.dart';
 import 'package:good_trip/widgets/app_bar/appbar_title_button.dart';
@@ -23,7 +23,7 @@ class RedirectingPageScreen extends StatelessWidget {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Divider(color: appTheme.gray20002),
+                      Divider(),
                       SizedBox(height: 31.v),
                       CustomImageView(
                           imagePath: ImageConstant.imgImage24,
@@ -35,20 +35,26 @@ class RedirectingPageScreen extends StatelessWidget {
                           padding: EdgeInsets.only(left: 19.h),
                           child: Text(
                               "Are you a customer from Greater Bay Area?",
-                              style: CustomTextStyles.titleSmallBluegray600)),
+                              style: theme.textTheme.titleSmall)),
                       SizedBox(height: 27.v),
-                      _buildFiftyEightChipView(context),
+                      _buildYes(context),
                       SizedBox(height: 29.v),
                       Padding(
                           padding: EdgeInsets.only(left: 19.h),
                           child: Text("Do you need ",
-                              style: CustomTextStyles.titleSmallBluegray600)),
+                              style: theme.textTheme.titleSmall)),
                       SizedBox(height: 27.v),
-                      _buildFiftyNine(context),
+                      _buildYes1(context),
                       Spacer(),
-                      Divider(color: appTheme.gray20002),
+                      Divider(),
                       SizedBox(height: 17.v),
-                      _buildNextButton(context),
+                      CustomElevatedButton(
+                          text: "Next",
+                          margin: EdgeInsets.symmetric(horizontal: 17.h),
+                          onPressed: () {
+                            onTapNext(context);
+                          },
+                          alignment: Alignment.center),
                       SizedBox(height: 31.v)
                     ]))));
   }
@@ -70,43 +76,26 @@ class RedirectingPageScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildFiftyEightChipView(BuildContext context) {
+  Widget _buildYes(BuildContext context) {
     return Padding(
         padding: EdgeInsets.only(left: 23.h),
         child: Wrap(
-            runSpacing: 5.v,
-            spacing: 5.h,
-            children: List<Widget>.generate(
-                2, (index) => FiftyeightchipviewItemWidget())));
+            runSpacing: 22.v,
+            spacing: 22.h,
+            children: List<Widget>.generate(2, (index) => YesItemWidget())));
   }
 
   /// Section Widget
-  Widget _buildFiftyNine(BuildContext context) {
+  Widget _buildYes1(BuildContext context) {
     return Padding(
         padding: EdgeInsets.only(left: 21.h),
         child: Wrap(
-            runSpacing: 5.v,
-            spacing: 5.h,
-            children:
-                List<Widget>.generate(2, (index) => FiftynineItemWidget())));
+            runSpacing: 22.v,
+            spacing: 22.h,
+            children: List<Widget>.generate(2, (index) => Yes2ItemWidget())));
   }
 
-  /// Section Widget
-  Widget _buildNextButton(BuildContext context) {
-    return CustomElevatedButton(
-        height: 52.v,
-        text: "Next",
-        margin: EdgeInsets.symmetric(horizontal: 17.h),
-        buttonStyle: CustomButtonStyles.fillBlueGray,
-        buttonTextStyle: CustomTextStyles.titleMediumOnSecondaryContainer,
-        onPressed: () {
-          onTapNextButton(context);
-        },
-        alignment: Alignment.center);
-  }
-
-  /// Navigates to the splashScreen when the action is triggered.
-  onTapNextButton(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.splashScreen);
+  onTapNext(BuildContext context) {
+    // TODO: implement Actions
   }
 }

@@ -21,9 +21,6 @@ class CustomTextFormField extends StatelessWidget {
     this.suffix,
     this.suffixConstraints,
     this.contentPadding,
-    this.borderDecoration,
-    this.fillColor,
-    this.filled = true,
     this.validator,
   }) : super(
           key: key,
@@ -63,12 +60,6 @@ class CustomTextFormField extends StatelessWidget {
 
   final EdgeInsets? contentPadding;
 
-  final InputBorder? borderDecoration;
-
-  final Color? fillColor;
-
-  final bool? filled;
-
   final FormFieldValidator<String>? validator;
 
   @override
@@ -87,7 +78,7 @@ class CustomTextFormField extends StatelessWidget {
           controller: controller,
           focusNode: focusNode ?? FocusNode(),
           autofocus: autofocus!,
-          style: textStyle ?? CustomTextStyles.titleLargePrimary,
+          style: textStyle ?? CustomTextStyles.bodyLargeRobotoPrimary,
           obscureText: obscureText!,
           textInputAction: textInputAction,
           keyboardType: textInputType,
@@ -98,37 +89,13 @@ class CustomTextFormField extends StatelessWidget {
       );
   InputDecoration get decoration => InputDecoration(
         hintText: hintText ?? "",
-        hintStyle: hintStyle ?? CustomTextStyles.titleLargePrimary,
+        hintStyle: hintStyle ?? CustomTextStyles.bodyLargeRobotoPrimary,
         prefixIcon: prefix,
         prefixIconConstraints: prefixConstraints,
         suffixIcon: suffix,
         suffixIconConstraints: suffixConstraints,
         isDense: true,
-        contentPadding: contentPadding ?? EdgeInsets.all(12.h),
-        fillColor: fillColor ??
-            theme.colorScheme.onSecondaryContainer.withOpacity(0.9),
-        filled: filled,
-        border: borderDecoration ??
-            OutlineInputBorder(
-              borderSide: BorderSide.none,
-            ),
-        enabledBorder: borderDecoration ??
-            OutlineInputBorder(
-              borderSide: BorderSide.none,
-            ),
-        focusedBorder: borderDecoration ??
-            OutlineInputBorder(
-              borderSide: BorderSide(
-                color: theme.colorScheme.primary.withOpacity(0.1),
-                width: 1,
-              ),
-            ),
-      );
-}
-
-/// Extension on [CustomTextFormField] to facilitate inclusion of all types of border style etc
-extension TextFormFieldStyleHelper on CustomTextFormField {
-  static OutlineInputBorder get fillOnSecondaryContainer1 => OutlineInputBorder(
-        borderSide: BorderSide.none,
+        contentPadding: contentPadding,
+        border: InputBorder.none,
       );
 }

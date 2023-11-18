@@ -1,84 +1,115 @@
 import 'package:flutter/material.dart';
 import 'package:good_trip/core/app_export.dart';
-import 'package:good_trip/widgets/app_bar/appbar_title.dart';
+import 'package:good_trip/widgets/app_bar/appbar_subtitle_one.dart';
 import 'package:good_trip/widgets/app_bar/custom_app_bar.dart';
-import 'package:good_trip/widgets/custom_outlined_button.dart';
+import 'package:good_trip/widgets/custom_elevated_button.dart';
 
 class LuggagePageScreen extends StatelessWidget {
-  const LuggagePageScreen({Key? key}) : super(key: key);
+  const LuggagePageScreen({Key? key})
+      : super(
+          key: key,
+        );
 
   @override
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
+
     return SafeArea(
-        child: Scaffold(
-            appBar: _buildAppBar(context),
-            body: Container(
-                width: double.maxFinite,
-                padding: EdgeInsets.symmetric(horizontal: 38.h, vertical: 43.v),
-                child: Column(children: [
-                  CustomOutlinedButton(
-                      height: 62.v,
-                      text: "Add Luggage",
-                      margin: EdgeInsets.only(left: 19.h, right: 18.h),
-                      buttonStyle: CustomButtonStyles.outlineGray,
-                      buttonTextStyle: CustomTextStyles.bodyMedium15,
-                      onPressed: () {
-                        onTapAddLuggage(context);
-                      }),
-                  SizedBox(height: 44.v),
-                  CustomImageView(
-                      imagePath: ImageConstant.imgImage22,
-                      height: 480.v,
-                      width: 312.h),
-                  SizedBox(height: 5.v)
-                ]))));
+      child: Scaffold(
+        appBar: _buildAppBar(context),
+        body: SizedBox(
+          width: double.maxFinite,
+          child: Column(
+            children: [
+              CustomImageView(
+                imagePath: ImageConstant.imgImage22480x312,
+                height: 480.v,
+                width: 312.h,
+              ),
+              SizedBox(height: 5.v),
+              _buildBackStack(context),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   /// Section Widget
   PreferredSizeWidget _buildAppBar(BuildContext context) {
     return CustomAppBar(
-        leadingWidth: 24.h,
-        leading: Container(
-            height: 16.v,
-            width: 9.h,
-            margin: EdgeInsets.only(left: 15.h, top: 17.v, bottom: 22.v),
-            child: Stack(children: [
-              CustomImageView(
-                  imagePath: ImageConstant.imgArrowLeft,
-                  height: 16.v,
-                  width: 9.h,
-                  alignment: Alignment.center,
-                  onTap: () {
-                    onTapImgArrowLeft(context);
-                  }),
-              SizedBox(
-                  height: 16.v,
-                  width: 9.h,
-                  child: Stack(alignment: Alignment.center, children: [
-                    CustomImageView(
-                        imagePath: ImageConstant.imgArrowLeft,
-                        height: 16.v,
-                        width: 9.h,
-                        alignment: Alignment.center),
-                    CustomImageView(
-                        imagePath: ImageConstant.imgArrowLeft,
-                        height: 16.v,
-                        width: 9.h,
-                        alignment: Alignment.center)
-                  ]))
-            ])),
-        centerTitle: true,
-        title: AppbarTitle(text: "Languages"));
+      height: 57.v,
+      centerTitle: true,
+      title: SizedBox(
+        height: 25.000004.v,
+        width: 84.h,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            AppbarSubtitleOne(
+              text: "Luggage",
+            ),
+            AppbarSubtitleOne(
+              text: "Luggage",
+            ),
+          ],
+        ),
+      ),
+      styleType: Style.bgFill,
+    );
   }
 
-  /// Navigates back to the previous screen.
-  onTapImgArrowLeft(BuildContext context) {
-    Navigator.pop(context);
-  }
-
-  /// Navigates to the luggageScanScreen when the action is triggered.
-  onTapAddLuggage(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.luggageScanScreen);
+  /// Section Widget
+  Widget _buildBackStack(BuildContext context) {
+    return SizedBox(
+      height: 263.v,
+      width: double.maxFinite,
+      child: Stack(
+        alignment: Alignment.bottomCenter,
+        children: [
+          Align(
+            alignment: Alignment.center,
+            child: Container(
+              margin: EdgeInsets.only(right: 1.h),
+              padding: EdgeInsets.symmetric(
+                horizontal: 16.h,
+                vertical: 34.v,
+              ),
+              decoration: AppDecoration.fillGray,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  SizedBox(height: 12.v),
+                  Text(
+                    "No luggage is recorded",
+                    style: CustomTextStyles.titleMediumOnPrimaryContainer18,
+                  ),
+                  SizedBox(height: 25.v),
+                  Text(
+                    "Have you checked in yet?",
+                    style: CustomTextStyles.bodyMediumBlack90014_1,
+                  ),
+                  SizedBox(height: 66.v),
+                  CustomElevatedButton(
+                    text: "Back",
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: EdgeInsets.only(bottom: 103.v),
+              child: SizedBox(
+                width: double.maxFinite,
+                child: Divider(),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
